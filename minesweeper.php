@@ -1,15 +1,14 @@
 <?php
 
 //šířka minového pole
-$sizeX = 12;
+$sizeX = 6;
 //výška minového pole
-$sizeY = 10;
+$sizeY = 6;
 //šance na minu (v procentech)
 $mineChance = 25;
 
 $posX = 0;
 $posY = 0;
-$color = "white";
 $data = '<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,24 +19,31 @@ $data = '<!DOCTYPE html>
 </head>
 <body>' . "\n";
 
-for($y = 0; $y < $sizeY; $y++){
-    for($x = 0; $x < $sizeX; $x++){
+for($y2 = 0; $y2 < $sizeY; $y2++){
+    for($x2 = 0; $x2 < $sizeX; $x2++){
+        $color = "white";
         $chance = random_int(1, 100);
         if($chance <= $mineChance){
             $color = "red";
         }
-        $data .= '<div style="border-style: solid; position: fixed; background-color:' . $color . '; height: 50px; width: 50px; margin-left: ' . $posX . 'px; margin-top: ' . $posY . 'px"></div>' . "\n";
+        $data .= '<div style="border-style: solid; position: absolute; background-color:' . $color . '; height: 50px; width: 50px; margin-left: ' . $posX . 'px; margin-top: ' . $posY . 'px"></div>' . "\n";
+        /*
+        if($color === "red"){
+            $charX = $posX - 50;
+            $charY = $posY - 50;
+            for($y = 0; $y < 3; $y++){
+                for($x = 0; $x < 3; $x++){
+                    $data .= '<p style="padding: 20px; position: absolute; margin-left: ' . $charX . 'px; margin-top: ' . $charY . 'px">X</p>' . "\n";
+                    $charX += 50;
+                }
+                $charX = -50;
+                $charY += 50;
+            }
+        }*/
         $posX += 50;
-        $color = "white";
     }
     $posX = 0;
-    $chance = random_int(1, 100);
-    if($chance <= $mineChance){
-        $color = "red";
-    }
-    $data .= '<div style="border-style: solid; position: fixed; background-color:' . $color . '; height: 50px; width: 50px; margin-left: ' . $posX . 'px; margin-top: ' . $posY . 'px"></div>' . "\n";
     $posY += 50;
-    $color = "white";
 }
 
 $data .= '</body>
