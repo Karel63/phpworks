@@ -1,8 +1,19 @@
 <?php
-$chance = 3;
-$numCards = 52;
-$rarity = ["Common", "Uncommon", "Rare", "Very Rare", "Epic", "Legendary", "Mythic"];
-$color = ["Gray", "#00ce00", "rgb(0, 76, 255)", "rgb(255, 119, 0)", "rgb(161, 0, 161)", "Yellow", "Red"];
+$chance = 4;
+$off = 1;
+$numCards = 100;
+$rarity = array(
+    array("Common", "Gray", "0px 0px White", "Black"),
+    array("Uncommon", "#00ce00", "5px 5px Greenyellow", "Black"),
+    array("Rare", "rgb(0, 76, 255)", "10px 10px Yellow", "Black"),
+    array("Very Rare", "rgb(255, 119, 0)", "10px 15px Yellow", "Black"),
+    array("Epic", "rgb(161, 0, 161)", "15px 20px Orange", "Black"),
+    array("Legendary", "Yellow", "15px 25px Orange", "Black"),
+    array("Mythical", "Red", "20px 30px Orangered", "Black"),
+    array("Exotic", "rgb(253, 182, 194)", "20px 35px Orangered", "Black"),
+    array("Ultimate", "Black", "25px 40px Red", "White"),
+    array("Godly", "White", "25px 45px Red", "Gold")
+);
 
 $html = '<!DOCTYPE html>
 <html lang="en">
@@ -16,15 +27,17 @@ $html = '<!DOCTYPE html>
 <body>' . "\n";
 
 for($x = 1; $x <= $numCards; $x++){
-    for($l = 0; $l < count($rarity); $l++){
+    for($l = 0; $l < (count($rarity)); $l++){
         $number = mt_rand(1, $chance);
-        $card = $rarity[$l];
-        $col = $color[$l];
-        if($number < $chance){
+        $card = $rarity[$l][0];
+        $color = $rarity[$l][1];
+        $blur = $rarity[$l][2];
+        $text = $rarity[$l][3];
+        if($number < ($chance + 1 - $off)){
             break;
         }
     }
-    $html .= '<div style="margin-top: 2%; margin-bottom: 2%; border-style: solid; font-size: 350%; padding-top: 10%; text-align: center; padding-bottom: 10%; width: 20%; background-color: ' . $col . '">' . $card . '</div>' . "\n";
+    $html .= '<div style="color: ' . $text . '; box-shadow: 0px 0px ' . $blur . '; margin-top: 2%; margin-bottom: 2%; border-style: solid; font-size: 350%; padding-top: 10%; text-align: center; padding-bottom: 10%; width: 20%; background-color: ' . $color . '">' . $card . '</div>' . "\n";
 }
 
 $html .= '</body>
