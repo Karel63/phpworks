@@ -1,10 +1,10 @@
 # **MySQL.php**
 
 ## Odkaz na kód
-[Zde](https://github.com/Karel63/phpworks/tree/main/Experiment)
+[Zde](https://github.com/Karel63/phpworks/tree/main/mysqlphp/MySQL.php)
 
 ## Poznámky k nedostatkům
-### kód při úpravách se mi podařilo sprovoznit, ale při implementaci IDB jsem už měl pár problémů, např:
+### Kód při úpravách se mi podařilo sprovoznit, ale při implementaci IDB jsem už měl pár problémů, např:
 - kód vidí query jako neznámou/nenadefinovanou funkci
 - u public function connect nepochopil jsem výstup "?static" z popisů v IDB.php
 ### Ostatní problémy:
