@@ -9,6 +9,7 @@ class MySQL implements IDB{
     if ($con -> connect_error){
       return $con->connect_error;
     }
+    return $con;
   }
   function select(string $query): array{
     $data = self::connect()->query("SELECT * FROM $query");
