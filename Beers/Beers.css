@@ -1,0 +1,12 @@
+body{
+    background-color: darkcyan;
+}
+
+th{
+    border: 2px solid;
+    background-color: white;
+}
+
+td{
+    padding-right: 150px;
+}
