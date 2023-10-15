@@ -1,10 +1,10 @@
 <?php
 
-$graph1 = [[0, 1, 1, 1, 1],
-          [1, 0, 1, 1, 1],
-          [1, 1, 0, 1, 1],
-          [1, 1, 1, 0, 1],
-          [1, 1, 1, 1, 0]
+$graph1 = [[0, 0, 1, 1, 0],
+          [0, 0, 0, 0, 1],
+          [1, 0, 0, 1, 0],
+          [1, 0, 1, 0, 0],
+          [0, 1, 0, 1, 0]
 ];
 
 function path_exists(array $graph, int $start, int $end): bool{
@@ -16,16 +16,23 @@ function path_exists(array $graph, int $start, int $end): bool{
             return false;
         }
         $act = array_pop($to_visit);
+        echo $act;
         if($act == $end){
             return true;
         }
-        array_push($visited, $act);
+        array_push($visited, $act); //hmm
+        $n = 0;
         foreach($graph[$act] as $neigh){
-            if(!in_array($neigh, $to_visit) or !in_array($neigh, $visited)){
-                array_push($to_visit, $neigh);
+            if($neigh > 0){
+                if(in_array($n, $to_visit) || in_array($n, $visited)){
+                    //poznámka: negace pomocí ! před "in_array" mi nefungovala
+                }else{
+                    array_push($to_visit, $n);
+                }
             }
+            $n++;
         }
     }
 }
 
-var_dump(path_exists($graph1, 1, 2));
+var_dump(path_exists($graph1, 3, 4));
